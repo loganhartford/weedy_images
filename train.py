@@ -1,11 +1,14 @@
 from ultralytics import YOLO
 
+datapath = "coco8.yaml"
+# datapath = "D:\Documents\GitHub\weedy_images\datasets\oct16-augmented\data.yaml"
+
 if __name__ == '__main__':
     # Load a pretrained YOLO model (recommended for training)
     model = YOLO("yolo11n.pt")
 
     # Train the model using the 'coco8.yaml' dataset for 3 epochs
-    results = model.train(data="coco8.yaml", epochs=3, device=0)
+    results = model.train(data=datapath, epochs=3, device=0)
 
     # Evaluate the model's performance on the validation set
     results = model.val()
@@ -14,4 +17,4 @@ if __name__ == '__main__':
     results = model("https://ultralytics.com/images/bus.jpg")
 
     # # Export the model to ONNX format
-    # success = model.export(format="onnx")
+    success = model.export(format="onnx")
