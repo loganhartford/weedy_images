@@ -1,6 +1,4 @@
 from ultralytics import YOLO
-import matplotlib.pyplot as plt
-import cv2
 
 # model_path = "D:/Documents/GitHub/weedy_images/runs/detect/train4/weights/best_ncnn_model"
 # img_path = "D:/Documents/GitHub/weedy_images/datasets/oct16-augmented/test/images/captured_image_20241016_153912_jpg.rf.35894ba5438fabbbc9a7650da1e6ba62.jpg"
