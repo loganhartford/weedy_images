@@ -15,10 +15,12 @@ def get_next_save_filename(base_name="model", extension=".pt", directory=save_di
 
     return os.path.join(directory, f"{base_name}{next_number}{extension}")
 
-datapath = "coco8.yaml"
+# datapath = "coco8.yaml"
 # datapath = "D:\Documents\GitHub\weedy_images\datasets\oct-16-unaugmented\data.yaml"
+datapath = "D:\Documents\GitHub\weedy_images\datasets\oct16-augmented\data.yaml"
 
-model_path = "models\yolo11n.pt"
+# model_path = "models\yolo11n.pt"
+model_path = "models/saves/100epochs.pt"
 
 if __name__ == '__main__':
     # Load pre-trained model
@@ -28,8 +30,9 @@ if __name__ == '__main__':
         # Train model with data augmentation parameters (default values)
         results = model.train(
             data=datapath,
-            epochs=1,
+            epochs=1000,
             device=0,
+            # patience=0,
             # Data augmentation hyperparameters
             hsv_h=0.015,                    # Adjust hue | default: 0.015
             hsv_s=0.7,                      # Adjust saturation | default: 0.7
