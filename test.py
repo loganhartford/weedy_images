@@ -3,7 +3,7 @@ from ultralytics import YOLO
 # model_path = "D:/Documents/GitHub/weedy_images/runs/detect/train4/weights/best_ncnn_model"
 # img_path = "D:/Documents/GitHub/weedy_images/datasets/oct16-augmented/test/images/captured_image_20241016_153912_jpg.rf.35894ba5438fabbbc9a7650da1e6ba62.jpg"
 
-model_path = "D:/Documents/GitHub/weedy_images/models/best_ncnn_model"
+model_path = "D:/Documents/GitHub/weedy_images/models/coco_ncnn_model"
 img_path = "D:/Documents/GitHub/weedy_images/datasets/coco8/images/val/000000000036.jpg"
 
 if __name__ == '__main__':
