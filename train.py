@@ -1,17 +1,34 @@
 from ultralytics import YOLO
+import os
 
-# datapath = "coco8.yaml"
-datapath = "D:\Documents\GitHub\weedy_images\datasets\oct-16-unaugmented\data.yaml"
+
+save_dir = "models/saves"
+def get_next_save_filename(base_name="model", extension=".pt", directory=save_dir):
+    os.makedirs(directory, exist_ok=True)  # Create the directory if it doesn't exist
+    existing_saves = [f for f in os.listdir(directory) if f.startswith(base_name) and f.endswith(extension)]
+    
+    if existing_saves:
+        save_numbers = [int(f[len(base_name):-len(extension)]) for f in existing_saves if f[len(base_name):-len(extension)].isdigit()]
+        next_number = max(save_numbers) + 1 if save_numbers else 1
+    else:
+        next_number = 1
+
+    return os.path.join(directory, f"{base_name}{next_number}{extension}")
+
+datapath = "coco8.yaml"
+# datapath = "D:\Documents\GitHub\weedy_images\datasets\oct-16-unaugmented\data.yaml"
+
+model_path = "models\yolo11n.pt"
 
 if __name__ == '__main__':
     # Load pre-trained model
-    model = YOLO("yolo11n.pt")
+    model = YOLO(model_path)
     
     try:
         # Train model with data augmentation parameters (default values)
         results = model.train(
             data=datapath,
-            epochs=100,
+            epochs=1,
             device=0,
             # Data augmentation hyperparameters
             hsv_h=0.015,                    # Adjust hue | default: 0.015
@@ -42,8 +59,9 @@ if __name__ == '__main__':
         
     finally:
         # Save the current model state if interrupted or finished
+        save_path = get_next_save_filename()
         print("Saving model state...")
-        model.save('last.pt')  # Save the model's current weights
+        model.save(save_path)
         print("Model saved successfully.")
     
     # Export the model
