@@ -12,6 +12,9 @@ RUN apt-get update && \
     apt-get install -y graphviz && \
     rm -rf /var/lib/apt/lists/*
 
+# Install additional system dependencies for OpenCV
+RUN apt-get update && apt-get install -y libgl1-mesa-glx
+
 # Install Kaggle CLI for dataset downloading
 RUN pip install kaggle
 
