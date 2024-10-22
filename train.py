@@ -1,6 +1,7 @@
 from ultralytics import YOLO
 
-datapath = "coco8.yaml"  # Your dataset configuration
+# datapath = "coco8.yaml"
+datapath = "D:\Documents\GitHub\weedy_images\datasets\oct-16-unaugmented\data.yaml"
 
 if __name__ == '__main__':
     # Load pre-trained model
@@ -10,7 +11,7 @@ if __name__ == '__main__':
         # Train model with data augmentation parameters (default values)
         results = model.train(
             data=datapath,
-            epochs=3,
+            epochs=100,
             device=0,
             # Data augmentation hyperparameters
             hsv_h=0.015,                    # Adjust hue | default: 0.015
