@@ -1,0 +1,12 @@
+# hyp.yaml for YOLOv8
+flipud: 0.5  # Vertical flip probability
+fliplr: 0.5  # Horizontal flip probability
+hsv_h: 0.015  # Hue augmentation (fraction)
+hsv_s: 0.7  # Saturation augmentation (fraction)
+hsv_v: 0.4  # Value (brightness) augmentation (fraction)
+scale: 0.5  # Image scaling (+/- gain)
+rotate: 0.5  # Rotation angle (+/- degrees)
+translate: 0.1  # Image translation (+/- fraction)
+shear: 0.0  # Image shear (+/- fraction)
+perspective: 0.0  # Image perspective (+/- fraction)
+mosaic: 1.0  # Mosaic augmentation probability (1.0 for always)
