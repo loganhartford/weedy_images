@@ -32,6 +32,11 @@ if __name__ == '__main__':
             data=datapath,
             epochs=1000,
             device=0,
+            # Model hyperparameters
+            # lr0=0.005,
+            # warmup_epochs=5,
+            # batch=64,
+            # cos_lr=True,
             # Data augmentation hyperparameters
             hsv_h=0.02,                    # Adjust hue | default: 0.015
             hsv_s=0.8,                      # Adjust saturation | default: 0.7
@@ -62,9 +67,8 @@ if __name__ == '__main__':
     finally:
         # Save the current model state if interrupted or finished
         save_path = get_next_save_filename()
-        print("Saving model state...")
         model.save(save_path)
-        print("Model saved successfully.")
+        print("Model saved to: ", save_path)
     
     # Export the model
     success = model.export(format="ncnn")
