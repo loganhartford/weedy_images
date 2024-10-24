@@ -17,14 +17,18 @@ def get_next_save_filename(base_name="model", extension=".pt", directory=save_di
 
 # datapath = "coco8.yaml"
 # datapath = "D:\Documents\GitHub\weedy_images\datasets\oct-16-unaugmented\data.yaml"
-datapath = "D:\Documents\GitHub\weedy_images\datasets\oct16-augmented\data.yaml"
+# datapath = "D:\Documents\GitHub\weedy_images\datasets\oct16-augmented\data.yaml"
+# datapath = "D:\Documents\GitHub\weedy_images\datasets\oct-16-boxes\data.yaml"
+datapath = "D:\Documents\GitHub\weedy_images\datasets\pose-outdoor-test\data.yaml"
 
-model_path = "models/yolo11n.pt"
+# model_path = "models/yolo11n.pt"
+# model_path = "models\saves\cos.pt"
 # model_path = "models/saves/100epochs.pt"
 
 if __name__ == '__main__':
     # Load pre-trained model
-    model = YOLO(model_path)
+    # model = YOLO(model_path)
+    model = YOLO("yolo11n-pose.pt")
     
     try:
         # Train model with data augmentation parameters (default values)
