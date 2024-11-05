@@ -19,7 +19,7 @@ def get_next_save_filename(base_name="model", extension=".pt", directory=save_di
 # datapath = "D:\Documents\GitHub\weedy_images\datasets\oct-16-unaugmented\data.yaml"
 # datapath = "D:\Documents\GitHub\weedy_images\datasets\oct16-augmented\data.yaml"
 # datapath = "D:\Documents\GitHub\weedy_images\datasets\oct-16-boxes\data.yaml"
-datapath = "D:\Documents\GitHub\weedy_images\datasets\pose-outdoor-test\data.yaml"
+datapath = "D:\Documents\GitHub\weedy_images\datasets\pose-outddor-batch1\data.yaml"
 
 # model_path = "models/yolo11n.pt"
 # model_path = "models\saves\cos.pt"
