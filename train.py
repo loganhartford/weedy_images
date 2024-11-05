@@ -19,7 +19,7 @@ def get_next_save_filename(base_name="model", extension=".pt", directory=save_di
 # datapath = "D:\Documents\GitHub\weedy_images\datasets\oct-16-unaugmented\data.yaml"
 # datapath = "D:\Documents\GitHub\weedy_images\datasets\oct16-augmented\data.yaml"
 # datapath = "D:\Documents\GitHub\weedy_images\datasets\oct-16-boxes\data.yaml"
-datapath = "D:\Documents\GitHub\weedy_images\datasets\pose-outddor-batch1\data.yaml"
+datapath = "D:\Documents\GitHub\weedy_images\datasets\pose-indoor\data.yaml"
 
 # model_path = "models/yolo11n.pt"
 # model_path = "models\saves\cos.pt"
@@ -39,8 +39,8 @@ if __name__ == '__main__':
             # Model hyperparameters
             # lr0=0.005,
             # warmup_epochs=5,
-            # batch=64,
-            # cos_lr=True,
+            batch=64,
+            cos_lr=True,
             # Data augmentation hyperparameters
             hsv_h=0.02,                    # Adjust hue | default: 0.015
             hsv_s=0.8,                      # Adjust saturation | default: 0.7
