@@ -1,0 +1,20 @@
+[
+    {
+        "timestamp": "2024-11-22 18:19:52.913082",
+        "dataset_path": "D:\\Documents\\GitHub\\weedy_images\\datasets\\pose-indoor-bright\\data.yaml",
+        "model_save_path": "models/saves\\model1.pt",
+        "yolo_weights_path": "D:\\Documents\\GitHub\\weedy_images\\runs\\pose\\train"
+    },
+    {
+        "timestamp": "2024-11-22 22:19:29.084258",
+        "dataset_path": "D:\\Documents\\GitHub\\weedy_images\\datasets\\pose-partial-all\\data.yaml",
+        "model_save_path": "models/saves\\model2.pt",
+        "yolo_weights_path": "D:\\Documents\\GitHub\\weedy_images\\runs\\pose\\train2"
+    },
+    {
+        "timestamp": "2024-11-23 19:45:39.302691",
+        "dataset_path": "D:\\Documents\\GitHub\\weedy_images\\datasets\\pose-partial-outdoor\\data.yaml",
+        "custom_save_path": "models/saves\\model3.pt",
+        "yolo_weights_path": ""
+    }
+]

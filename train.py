@@ -1,8 +1,12 @@
 from ultralytics import YOLO
 import os
+import json
+import datetime
 
 
 save_dir = "models/saves"
+log_file = "./training_log.json"
+
 def get_next_save_filename(base_name="model", extension=".pt", directory=save_dir):
     os.makedirs(directory, exist_ok=True)  # Create the directory if it doesn't exist
     existing_saves = [f for f in os.listdir(directory) if f.startswith(base_name) and f.endswith(extension)]
@@ -15,19 +19,28 @@ def get_next_save_filename(base_name="model", extension=".pt", directory=save_di
 
     return os.path.join(directory, f"{base_name}{next_number}{extension}")
 
-# datapath = "coco8.yaml"
-# datapath = "D:\Documents\GitHub\weedy_images\datasets\oct-16-unaugmented\data.yaml"
-# datapath = "D:\Documents\GitHub\weedy_images\datasets\oct16-augmented\data.yaml"
-# datapath = "D:\Documents\GitHub\weedy_images\datasets\oct-16-boxes\data.yaml"
-datapath = "D:\Documents\GitHub\weedy_images\datasets\pose-indoor\data.yaml"
+def log_dataset_and_model(dataset_path, custom_save_path, yolo_weights_path):
+    os.makedirs(os.path.dirname(log_file), exist_ok=True)
 
-# model_path = "models/yolo11n.pt"
-# model_path = "models\saves\cos.pt"
-# model_path = "models/saves/100epochs.pt"
+    log_entry = {
+        "timestamp": str(datetime.datetime.now()),
+        "dataset_path": dataset_path,
+        "custom_save_path": custom_save_path,
+        "yolo_weights_path": yolo_weights_path
+    }
 
-if __name__ == '__main__':
-    # Load pre-trained model
-    # model = YOLO(model_path)
+    if os.path.exists(log_file):
+        with open(log_file, "r") as f:
+            logs = json.load(f)
+    else:
+        logs = []
+
+    logs.append(log_entry)
+
+    with open(log_file, "w") as f:
+        json.dump(logs, f, indent=4)
+
+def train_model(datapath):
     model = YOLO("yolo11n-pose.pt")
     
     try:
@@ -72,7 +85,17 @@ if __name__ == '__main__':
         # Save the current model state if interrupted or finished
         save_path = get_next_save_filename()
         model.save(save_path)
-        print("Model saved to: ", save_path)
-    
-    # Export the model
+        log_dataset_and_model(datapath, save_path, results.save_dir)
+        
     success = model.export(format="ncnn")
+
+if __name__ == '__main__':
+    paths = [
+        # "D:\Documents\GitHub\weedy_images\datasets\pose-indoor-bright\data.yaml",
+        # "D:\Documents\GitHub\weedy_images\datasets\pose-partial-all\data.yaml",
+        "D:\Documents\GitHub\weedy_images\datasets\pose-partial-outdoor\data.yaml",
+    ]
+
+    for path in paths:
+        train_model(path)
+    
