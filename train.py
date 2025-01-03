@@ -41,7 +41,8 @@ def log_dataset_and_model(dataset_path, custom_save_path, yolo_weights_path):
         json.dump(logs, f, indent=4)
 
 def train_model(datapath):
-    model = YOLO("yolo11n-pose.pt")
+    # model = YOLO("yolo11n-pose.pt")
+    model = YOLO("D:\Documents\GitHub\weedy_images\models\saves\outdoor_partial.pt")
     
     try:
         # Train model with data augmentation parameters (default values)
@@ -91,9 +92,9 @@ def train_model(datapath):
 
 if __name__ == '__main__':
     paths = [
-        # "D:\Documents\GitHub\weedy_images\datasets\pose-indoor-bright\data.yaml",
+        "D:\Documents\GitHub\weedy_images\datasets\pose-indoor-bright\data.yaml",
         # "D:\Documents\GitHub\weedy_images\datasets\pose-partial-all\data.yaml",
-        "D:\Documents\GitHub\weedy_images\datasets\pose-partial-outdoor\data.yaml",
+        # "D:\Documents\GitHub\weedy_images\datasets\pose-partial-outdoor\data.yaml",
     ]
 
     for path in paths:

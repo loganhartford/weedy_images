@@ -16,5 +16,9 @@
         "dataset_path": "D:\\Documents\\GitHub\\weedy_images\\datasets\\pose-partial-outdoor\\data.yaml",
         "custom_save_path": "models/saves\\model3.pt",
         "yolo_weights_path": ""
-    }
-]
+    },
+    {
+        "timestamp": "2025-01-03 12:39:11.865466",
+        "dataset_path": "D:\\Documents\\GitHub\\weedy_images\\datasets\\pose-indoor-bright\\data.yaml",
+        "custom_save_path": "models/saves\\model4.pt",
+        "yolo_weights_path": 
