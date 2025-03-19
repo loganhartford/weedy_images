@@ -5,6 +5,7 @@ import io
 
 # FastAPI server URL
 API_URL = "http://127.0.0.1:8000/predict/"
+SAMPLE_IMAGES_DIR = "D:/Documents/GitHub/weedy_images/model_demo/sample_images"
 
 st.title("Weed Detection Demo")
 
