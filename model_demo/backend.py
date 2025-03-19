@@ -9,7 +9,7 @@ import yaml
 from ultralytics import YOLO
 
 # Define paths
-MODEL_PATH = "D:/Documents/GitHub/weedy_images/models/indoor_pose_ncnn_model"
+MODEL_PATH = "D:/Documents/GitHub/weedy_images/models/outdoor_all_nano_ncnn_model"
 OUTPUT_DIR = "output"
 
 # Load model
@@ -34,6 +34,9 @@ async def predict(file: UploadFile = File(...)):
         return {"message": "No detections found"}
 
     result = results[0]
+
+    valid = result.boxes.conf >= 0.5
+    result.boxes = result.boxes[valid]
 
     # Save annotated image
     output_path = os.path.join(OUTPUT_DIR, "annotated.jpg")
