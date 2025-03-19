@@ -42,7 +42,8 @@ def log_dataset_and_model(dataset_path, custom_save_path, yolo_weights_path):
 
 def train_model(datapath):
     # model = YOLO("yolo11n-pose.pt")
-    model = YOLO("D:\Documents\GitHub\weedy_images\models\saves\outdoor_partial.pt")
+    model = YOLO("yolo11s-pose.pt")
+    # model = YOLO("D:\Documents\GitHub\weedy_images\models\saves\indoor_bright.pt")
     
     try:
         # Train model with data augmentation parameters (default values)
@@ -53,7 +54,7 @@ def train_model(datapath):
             # Model hyperparameters
             # lr0=0.005,
             # warmup_epochs=5,
-            batch=64,
+            batch=32,
             cos_lr=True,
             # Data augmentation hyperparameters
             hsv_h=0.02,                    # Adjust hue | default: 0.015
@@ -86,15 +87,16 @@ def train_model(datapath):
         # Save the current model state if interrupted or finished
         save_path = get_next_save_filename()
         model.save(save_path)
-        log_dataset_and_model(datapath, save_path, results.save_dir)
+        # log_dataset_and_model(datapath, save_path, results.save_dir)
         
     success = model.export(format="ncnn")
 
 if __name__ == '__main__':
     paths = [
-        "D:\Documents\GitHub\weedy_images\datasets\pose-indoor-bright\data.yaml",
-        # "D:\Documents\GitHub\weedy_images\datasets\pose-partial-all\data.yaml",
+        # "D:\Documents\GitHub\weedy_images\datasets\indoor-angled\data.yaml",
+        # "D:\Documents\GitHub\weedy_images\datasets\indoor-all\data.yaml",
         # "D:\Documents\GitHub\weedy_images\datasets\pose-partial-outdoor\data.yaml",
+        "D:\Documents\GitHub\weedy_images\datasets\outdoor-all\data.yaml",
     ]
 
     for path in paths:

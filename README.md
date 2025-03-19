@@ -1,2 +1,8 @@
 # weedy_images
-Images collected for training and validating computer vision in the WeedWarden Capstone project.
+Computer Vision repo for the WeedWarden capstone project.
+
+Includes:
+- Collected images
+- Labelled datasets
+- Training and data augmentation scripts
+- Exported models
