@@ -42,7 +42,7 @@ def log_dataset_and_model(dataset_path, custom_save_path, yolo_weights_path):
 
 def train_model(datapath):
     # model = YOLO("yolo11n-pose.pt")
-    model = YOLO("yolo11s-pose.pt")
+    model = YOLO("yolo11n-pose.pt")
     # model = YOLO("D:\Documents\GitHub\weedy_images\models\saves\indoor_bright.pt")
     
     try:
