@@ -25,10 +25,9 @@ async def predict(file: UploadFile = File(...)):
     # Load image
     contents = await file.read()
     image = Image.open(io.BytesIO(contents))
-    image_np = np.array(image)
 
     # Run inference
-    results = model(image_np)
+    results = model(image)
 
     # If no detections, return
     if not results:
