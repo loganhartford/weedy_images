@@ -4,6 +4,9 @@ from PIL import Image
 import io
 import os
 
+# Set the page configuration
+st.set_page_config(page_title="Outdoor Vision Model", page_icon=":camera:")
+
 # FastAPI server URL
 API_URL = "http://127.0.0.1:8000/predict/"
 SAMPLE_IMAGES_DIR = "D:/Documents/GitHub/weedy_images/model_demo/sample_images"
@@ -26,7 +29,7 @@ sample_images = [filename for filename in os.listdir(SAMPLE_IMAGES_DIR)
                  if filename.lower().endswith((".png", ".jpg", ".jpeg"))]
 
 # Set the number of icons per row
-cols_per_row = 4
+cols_per_row = 8
 # Loop over images in groups to create a grid of clickable icons
 for i in range(0, len(sample_images), cols_per_row):
     cols = st.columns(cols_per_row)
@@ -35,10 +38,10 @@ for i in range(0, len(sample_images), cols_per_row):
             image_path = os.path.join(SAMPLE_IMAGES_DIR, filename)
             img = Image.open(image_path)
             # Resize for a small icon display
-            icon_size = (200, 200)
+            icon_size = (100, 100)
             img_icon = img.resize(icon_size)
             st.image(img_icon)
-            if st.button("Select", key=filename):
+            if st.button("Select", key=filename, help="Select this image", use_container_width=True):
                 st.session_state.selected_sample = image_path
 
 # Allow user to upload an image for inference
@@ -70,3 +73,4 @@ if image is not None:
         annotated_image_placeholder.image(annotated_image, caption="Model Output", use_container_width=True)
     else:
         st.error("Error processing image.")
+        
